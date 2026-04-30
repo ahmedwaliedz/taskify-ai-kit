@@ -5,11 +5,26 @@
 
 ## 📦 Responses
 - **API Resources**: Mandatory. Never return Eloquent models or raw arrays.
-- **Format**:
+- **Format** (Laravel default paginator):
   ```json
   {
-    "data": { ... },
-    "meta": { "version": "1.2" }
+    "data": [
+      { "id": 1, "name": "Item 1" }
+    ],
+    "links": {
+      "first": "http://api.test/api/v1/items?page=1",
+      "last": "http://api.test/api/v1/items?page=10",
+      "prev": null,
+      "next": "http://api.test/api/v1/items?page=2"
+    },
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 10,
+      "per_page": 15,
+      "to": 15,
+      "total": 150
+    }
   }
   ```
 

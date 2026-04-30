@@ -19,6 +19,7 @@
 - Use FK constraints with `cascadeOnDelete()`.
 - Soft Deletes require unique constraint adjustment:
   `Rule::unique()->ignore()->where(fn($q) => $q->whereNull('deleted_at'))`
+- **Migration down()**: Must always be safe (no data loss, reversible).
 
 ## 4. Testing Protocol
 - Pest is the default.
@@ -28,11 +29,17 @@
 ## 5. Phase Gates
 - Every phase (Specify, Plan, Tasks) MUST end with `⏸️ Awaiting @approve`.
 - Implementation starts ONLY after tasks approval.
+- **Penalty**: `⚠️ PROTOCOL VIOLATION. Reverting. Awaiting @approve.`
 
 ## 6. Static Version Detection
 - AI must detect Laravel version from `composer.lock`.
 - Adapt syntax based on detected version (10, 11, or 12).
 - Laravel 11+ uses `bootstrap/app.php` for middleware/exceptions.
 
+## 7. MCP Execution Rules
+- Explicit confirmation required before any MCP tool.
+- Log all approvals/rejections/timeouts to `memory.md`.
+- After 3 rejections → suggest temporary disable.
+
 ---
-*Failure to follow this constitution triggers a PROTOCOL VIOLATION.*
+*Failure to follow this constitution triggers: `⚠️ PROTOCOL VIOLATION. Reverting. Awaiting @approve.`*
