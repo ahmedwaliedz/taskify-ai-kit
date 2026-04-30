@@ -1,5 +1,11 @@
 # 🚀 TASKIFY AI-Kit (v1.2)
 
+![Laravel](https://img.shields.io/badge/Laravel-10|11|12-FF2D20?style=flat&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Workflow](https://img.shields.io/badge/Workflow-Spec→Closure-4CAF50)
+![AI](https://img.shields.io/badge/Agent-Universal-007ACC)
+
 <p align="center">
   <strong>A universal, `.md`-based starter kit that transforms any AI coding agent (Cursor, Claude, Copilot, Windsurf) into a disciplined, production-ready Laravel Tech Lead.</strong>
 </p>
@@ -147,6 +153,44 @@ Taskify is universal but integrates slightly differently depending on your IDE:
 - **Claude Code**: The AI reads the markdown instructions directly from the terminal context.
 - **Windsurf**: Add rules to `.windsurfrules` pointing to the `.ai/` directory.
 - **GitHub Copilot**: Reference the `.ai/` templates in your `.github/copilot-instructions.md`.
+
+## 🚀 Quick Start (First 5 Minutes)
+```bash
+# 1. Install in Laravel project
+composer require taskify/ai-kit
+php artisan taskify:install
+
+# 2. Create first feature
+mkdir -p features/user-auth
+cp .ai/templates/spec.md features/user-auth/spec.md
+
+# 3. Start with AI Agent
+/specify "I need user authentication with Laravel Sanctum"
+```
+
+## 🤝 IDE Setup Guide
+
+| IDE | Configuration | Notes |
+|-----|---------------|-------|
+| **Cursor** | `.cursor/rules/taskify.mdc` → `@include .ai/**/*.md` | Native slash commands |
+| **Claude Code** | `.claude/commands/` → reference `.ai/skills/` | Direct chat invocation |
+| **Windsurf** | `.windsurfrules` → rules: `.ai/rules/*.md` | Prompt-based triggers |
+| **Copilot** | `.github/copilot-instructions.md` → link `.ai/` | Contextual chat only |
+
+## 📦 What Happens After Installation?
+
+- ✅ Copies `.ai/` (22 workflow files) to project root
+- ✅ Scaffolds `features/_example_/` as reference
+- ✅ Publishes `PROJECT_CONTEXT.md`
+- ✅ **Zero Runtime Overhead** in production
+
+## 🛠️ Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| AI ignores `.ai/` files | Ensure `.cursorrules` or `.windsurfrules` reference `.ai/` |
+| `taskify:install` fails | Run inside Laravel root (must contain `artisan`) |
+| `memory.md` exceeds 150 lines | Run `/compress-memory` command |
 
 ---
 
