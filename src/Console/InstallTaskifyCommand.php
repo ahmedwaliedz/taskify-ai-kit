@@ -24,8 +24,23 @@ class InstallTaskifyCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle(): int
     {
+        // ✅ TASKIFY v1.2: Validate Laravel Project Root
+        if (!File::exists(base_path('artisan'))) {
+            $this->error('❌ Taskify must be installed in a Laravel project root.');
+            $this->info('💡 Error: artisan file not found. Run this command from your Laravel project directory.');
+            return Command::FAILURE;
+        }
+
+        // ✅ TASKIFY v1.2: Check for existing .ai/ directory
+        if (!$this->option('force') && File::exists(base_path('.ai'))) {
+            if (!$this->confirm('⚠️  The .ai/ directory already exists. Overwrite existing files?', false)) {
+                $this->info('✅ Installation cancelled. Existing files preserved.');
+                return Command::SUCCESS;
+            }
+        }
+
         $this->info('🚀 Initializing Taskify AI Kit v1.2...');
 
         $this->setupAILayer();
@@ -33,8 +48,21 @@ class InstallTaskifyCommand extends Command
         $this->setupFeaturesDirectory();
         $this->setupConfig();
 
-        $this->info('✅ Taskify AI Kit structure is ready.');
-        $this->comment('Next: Run "/specify" to start your first feature.');
+        $this->newLine();
+        $this->info('✅ TASKIFY v1.2 installed successfully!');
+        $this->newLine();
+        $this->info('📁 Created:');
+        $this->line('   • .ai/ (22 workflow files)');
+        $this->line('   • features/_example_/ (reference implementation)');
+        $this->line('   • PROJECT_CONTEXT.md (cross-feature tracker)');
+        $this->newLine();
+        $this->info('🚀 Next Steps:');
+        $this->line('   1. Open features/_example_/spec.md');
+        $this->line('   2. Modify it for your first feature');
+        $this->line('   3. Run: /specify "your feature description"');
+        $this->newLine();
+
+        return Command::SUCCESS;
     }
 
     protected function setupAILayer(): void
