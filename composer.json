@@ -13,9 +13,19 @@
         "php": "^8.2",
         "laravel/framework": "^10.0|^11.0|^12.0"
     },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "laravel/pint": "^1.13",
+        "orchestra/testbench": "^8.0|^9.0"
+    },
     "autoload": {
         "psr-4": {
             "Taskify\\AIKit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Taskify\\AIKit\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -24,6 +34,15 @@
                 "Taskify\\AIKit\\TaskifyServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "pest",
+        "lint": "pint",
+        "lint:check": "pint --test",
+        "check": [
+            "@lint:check",
+            "@test"
+        ]
     },
     "minimum-stability": "stable",
     "prefer-stable": true
