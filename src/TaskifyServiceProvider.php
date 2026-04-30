@@ -19,14 +19,14 @@ class TaskifyServiceProvider extends ServiceProvider
 
             // Publish stubs
             $this->publishes([
-                __DIR__ . '/../stubs/ai' => base_path('.ai'),
-                __DIR__ . '/../stubs/PROJECT_CONTEXT.md' => base_path('PROJECT_CONTEXT.md'),
-                __DIR__ . '/../stubs/features' => base_path('features'),
+                __DIR__.'/../stubs/ai' => base_path('.ai'),
+                __DIR__.'/../stubs/PROJECT_CONTEXT.md' => base_path('PROJECT_CONTEXT.md'),
+                __DIR__.'/../stubs/features/_example_' => base_path('features/_example_'),
             ], 'taskify-stubs');
 
             // Publish config
             $this->publishes([
-                __DIR__ . '/../config/taskify.php' => config_path('taskify.php'),
+                __DIR__.'/../config/taskify.php' => config_path('taskify.php'),
             ], 'taskify-config');
         }
     }
@@ -36,6 +36,10 @@ class TaskifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/taskify.php', 'taskify');
+        $this->mergeConfigFrom(__DIR__.'/../config/taskify.php', 'taskify');
+
+        $this->commands([
+            InstallTaskifyCommand::class,
+        ]);
     }
 }

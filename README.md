@@ -53,9 +53,9 @@ php artisan taskify:install
 Ideal for non-Laravel projects or if you prefer a static, dependency-free approach.
 
 ```bash
-npx degit taskify/ai-kit .ai/
+npx degit taskify/ai-kit ./
 # Or via git:
-git clone --depth=1 https://github.com/ahmedwaliedz/taskify-ai-kit.git .ai/
+git clone --depth=1 https://github.com/taskify/ai-kit.git ./
 ```
 
 ---
