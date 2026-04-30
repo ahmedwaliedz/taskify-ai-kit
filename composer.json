@@ -16,7 +16,8 @@
     "require-dev": {
         "pestphp/pest": "^2.0",
         "laravel/pint": "^1.13",
-        "orchestra/testbench": "^8.0|^9.0"
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpstan/phpstan": "^1.10"
     },
     "autoload": {
         "psr-4": {
@@ -39,8 +40,10 @@
         "test": "pest",
         "lint": "pint",
         "lint:check": "pint --test",
+        "analyse": "phpstan analyse",
         "check": [
             "@lint:check",
+            "@analyse",
             "@test"
         ]
     },

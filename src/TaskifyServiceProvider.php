@@ -37,9 +37,5 @@ class TaskifyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/taskify.php', 'taskify');
-
-        $this->commands([
-            InstallTaskifyCommand::class,
-        ]);
     }
 }

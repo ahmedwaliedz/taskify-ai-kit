@@ -20,10 +20,13 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install --no-interaction
+        run: composer update --no-interaction
 
       - name: Run Pint
         run: composer lint
+
+      - name: Run PHPStan
+        run: composer analyse
 
       - name: Run Tests
         run: composer test
