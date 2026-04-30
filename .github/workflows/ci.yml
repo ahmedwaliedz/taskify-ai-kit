@@ -27,7 +27,7 @@ jobs:
           extensions: dom, mbstring, xml, tokenizer, fileinfo
 
       - name: Install dependencies
-        run: composer install --no-interaction --prefer-dist
+        run: composer update --no-interaction --prefer-dist
 
       - name: Run Pint
         run: composer lint:check
