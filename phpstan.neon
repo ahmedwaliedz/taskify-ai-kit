@@ -1,0 +1,8 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+parameters:
+    paths:
+        - src
+    level: 6
+    reportUnmatchedIgnoredErrors: false

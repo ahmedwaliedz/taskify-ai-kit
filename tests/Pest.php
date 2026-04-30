@@ -1,5 +1,5 @@
 <?php
 
-use Orchestra\Testbench\TestCase;
+use Taskify\AIKit\Tests\TestCase;
 
 uses(TestCase::class)->in('Feature');
